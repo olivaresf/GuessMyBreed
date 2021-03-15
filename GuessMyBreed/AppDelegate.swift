@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-		NotificationCenter.default.addObserver(self, // AppDelegate will listen
-											   selector: #selector(updateBreeds(notification:)), // When notification is received, execute this function
-											   name: .updateBreeds, // Observe this notification
-											   object: nil) // No filter. Observe notifications from everyone.
-		
+        NotificationCenter.default.addObserver(self, // AppDelegate will listen
+                                               selector: #selector(updateBreeds(notification:)), // When notification is received, execute this function
+                                               name: .updateBreeds, // Observe this notification
+                                               object: nil) // No filter. Observe notifications from everyone.
+        
         return true
     }
 
