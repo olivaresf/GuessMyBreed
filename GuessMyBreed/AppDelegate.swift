@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let dataController = DataController(modelName: "GuessMyBreed")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        NotificationCenter.default.addObserver(self, // AppDelegate will listen
+                                               selector: #selector(updateBreeds(notification:)), // When notification is received, execute this function
+                                               name: .updateBreeds, // Observe this notification
+                                               object: nil) // No filter. Observe notifications from everyone.
+        
         return true
     }
 
@@ -79,5 +84,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate {
+    
+    @objc func updateBreeds(notification: Notification) {
+        
+        guard let receivedBreeds = notification.object as? [String] else { return }
+        
+        breeds = receivedBreeds
+    }
 }
 

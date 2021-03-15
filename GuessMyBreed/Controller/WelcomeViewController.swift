@@ -73,11 +73,9 @@ class WelcomeViewController: UIViewController {
     func handleBreedsListResponse(breedsListData: [String]?, error: Error?) {
            if let breedsListData = breedsListData {
             if (breedsListData.count>0){
-                DispatchQueue.main.async {
-                    print("Got the breed list")
-                    let object = UIApplication.shared.delegate
-                    let appDelegate = object as! AppDelegate
-                    appDelegate.breeds = breedsListData
+                DispatchQueue.main.async {					
+                    NotificationCenter.default.post(name: .updateBreeds,
+                                                    object: breedsListData)
                 }
             } else {
                 Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
