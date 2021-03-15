@@ -74,10 +74,14 @@ class WelcomeViewController: UIViewController {
            if let breedsListData = breedsListData {
             if (breedsListData.count>0){
                 DispatchQueue.main.async {
-                    print("Got the breed list")
-                    let object = UIApplication.shared.delegate
-                    let appDelegate = object as! AppDelegate
-                    appDelegate.breeds = breedsListData
+					// Instead of assigning it directly, post a notification.
+//                    print("Got the breed list")
+//                    let object = UIApplication.shared.delegate
+//                    let appDelegate = object as! AppDelegate
+//                    appDelegate.breeds = breedsListData
+					
+					NotificationCenter.default.post(name: NSNotification.Name.init("BreedsUpdated"),
+													object: breedsListData)
                 }
             } else {
                 Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
