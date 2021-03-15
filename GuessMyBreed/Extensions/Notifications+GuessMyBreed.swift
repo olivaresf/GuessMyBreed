@@ -9,5 +9,5 @@
 import Foundation
 
 extension NSNotification.Name {
-	static let updateBreeds = NSNotification.Name("BreedsUpdated")
+    static let updateBreeds = NSNotification.Name("BreedsUpdated")
 }
