@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
 		NotificationCenter.default.addObserver(self, // AppDelegate will listen
-											   selector: #selector(<#T##@objc method#>), // When notification is received, execute this function
+											   selector: #selector(updateBreeds(notification:)), // When notification is received, execute this function
 											   name: NSNotification.Name("BreedsUpdated"), // Observe this notification
 											   object: nil) // No filter. Observe notifications from everyone.
 		
@@ -84,5 +84,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate {
+	
+	@objc func updateBreeds(notification: Notification) {
+		
+		guard let receivedBreeds = notification.object as? [String] else { return }
+		
+		breeds = receivedBreeds
+	}
 }
 
