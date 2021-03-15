@@ -74,8 +74,8 @@ class WelcomeViewController: UIViewController {
            if let breedsListData = breedsListData {
             if (breedsListData.count>0){
                 DispatchQueue.main.async {					
-					NotificationCenter.default.post(name: .updateBreeds,
-													object: breedsListData)
+                    NotificationCenter.default.post(name: .updateBreeds,
+                                                    object: breedsListData)
                 }
             } else {
                 Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
