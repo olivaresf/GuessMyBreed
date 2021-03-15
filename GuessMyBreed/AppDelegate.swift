@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 		NotificationCenter.default.addObserver(self, // AppDelegate will listen
 											   selector: #selector(updateBreeds(notification:)), // When notification is received, execute this function
-											   name: NSNotification.Name("BreedsUpdated"), // Observe this notification
+											   name: .updateBreeds, // Observe this notification
 											   object: nil) // No filter. Observe notifications from everyone.
 		
         return true
