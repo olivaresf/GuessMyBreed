@@ -87,12 +87,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-	
-	@objc func updateBreeds(notification: Notification) {
-		
-		guard let receivedBreeds = notification.object as? [String] else { return }
-		
-		breeds = receivedBreeds
-	}
+    
+    @objc func updateBreeds(notification: Notification) {
+        
+        guard let receivedBreeds = notification.object as? [String] else { return }
+        
+        breeds = receivedBreeds
+    }
 }
 
